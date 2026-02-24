@@ -1,8 +1,7 @@
 package org.example.target;
 
 import org.agrona.collections.ObjectHashSet;
-import org.example.portfolio.models.Portfolio;
-import org.example.target.models.TargetModel;
+import org.example.target.models.TargetModelRecord;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,10 +16,11 @@ public class CsvModelReader implements ModelReader {
     }
 
     @Override
-    public Set<TargetModel> read() throws FileNotFoundException {
-        var set = new ObjectHashSet<TargetModel>();
+    public Set<TargetModelRecord> read() throws FileNotFoundException {
+        var set = new ObjectHashSet<TargetModelRecord>();
         var file = new File(filePath);
         try (Scanner inputStream = new Scanner(file)) {
+            System.out.println("Reading portfolio from " + file.getName() + " ...");
             inputStream.next();
             while (inputStream.hasNext()) {
                 String data = inputStream.next();
@@ -28,10 +28,11 @@ public class CsvModelReader implements ModelReader {
 
                 String ticker = values[0];
                 int targetPct = Integer.parseInt(values[1]);
-                var targetModel = new TargetModel(ticker, targetPct);
+                var targetModel = new TargetModelRecord(ticker, targetPct);
                 set.add(targetModel);
             }
 
+            System.out.println("Successfully read portfolio from " + file.getName());
             return set;
         } catch (FileNotFoundException e) {
             System.out.println("File not found");

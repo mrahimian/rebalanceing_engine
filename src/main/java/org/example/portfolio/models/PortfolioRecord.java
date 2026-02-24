@@ -1,11 +1,11 @@
 package org.example.portfolio.models;
 
-public class Portfolio {
+public class PortfolioRecord {
     String ticker;
     double shares;
     double price;
 
-    public Portfolio(String ticker, double shares, double price) {
+    public PortfolioRecord(String ticker, double shares, double price) {
         this.ticker = ticker;
         this.shares = shares;
         this.price = price;

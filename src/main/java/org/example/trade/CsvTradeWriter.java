@@ -11,6 +11,7 @@ public class CsvTradeWriter implements TradeWriter {
     public void write(Set<Trade> trades) throws FileNotFoundException {
         var file = new File("./trades.csv");
         try (PrintWriter writer = new PrintWriter(file)) {
+            System.out.println("Writing trades to " + file.getName() + " ...");
             trades.stream().forEach(trade -> {
                 String line = trade.getTicker() + ","
                         + trade.getSide() + ","
@@ -19,6 +20,8 @@ public class CsvTradeWriter implements TradeWriter {
 
                 writer.println(line);
             });
+
+            System.out.println("Successfully wrote trades to " + file.getName());
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
             throw e;

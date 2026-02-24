@@ -1,10 +1,10 @@
 package org.example.target.models;
 
-public class TargetModel {
+public class TargetModelRecord {
     String ticker;
     int targetPct;
 
-    public TargetModel(String ticker, int targetPct) {
+    public TargetModelRecord(String ticker, int targetPct) {
         this.ticker = ticker;
         this.targetPct = targetPct;
     }
