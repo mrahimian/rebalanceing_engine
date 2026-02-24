@@ -2,9 +2,9 @@ package org.example.target.models;
 
 public class TargetModelRecord {
     String ticker;
-    int targetPct;
+    double targetPct;
 
-    public TargetModelRecord(String ticker, int targetPct) {
+    public TargetModelRecord(String ticker, double targetPct) {
         this.ticker = ticker;
         this.targetPct = targetPct;
     }
@@ -13,7 +13,7 @@ public class TargetModelRecord {
         return ticker;
     }
 
-    public int getTargetPct() {
+    public double getTargetPct() {
         return targetPct;
     }
 }
